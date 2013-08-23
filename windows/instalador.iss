@@ -24,9 +24,17 @@ LanguageID=$0416
 [Languages]
 Name: Portugues; MessagesFile: compiler:Languages\BrazilianPortuguese.isl
 [Files]
-Source: ..\arquivos\bin\*; DestDir: {app}
+Source: ..\arquivos\bin\*; DestDir: {app}; Flags: recursesubdirs
 Source: temp\*; DestDir: {app}
 Source: ..\arquivos\icone_16.ico; DestDir: {app}
 Source: ..\arquivos\icone_32.ico; DestDir: {app}
-Source: ..\arquivos\ajuda\*; DestDir: {app}\ajuda; Flags: recursesubdirs; Attribs: readonly
-Source: ..\arquivos\exemplos\*; DestDir: {app}\exemplos; Attribs: readonly; Flags: recursesubdirs
+Source: ..\arquivos\ajuda\*; DestDir: {app}\ajuda; Flags: recursesubdirs
+Source: ..\arquivos\exemplos\*; DestDir: {app}\exemplos; Flags: recursesubdirs
+[Registry]
+Root: HKCR; SubKey: .por; ValueType: string; ValueData: porfile; Flags: uninsdeletekey
+Root: HKCR; SubKey: porfile; ValueType: string; ValueData: Programa na linguagem Portugol 2.0; Flags: uninsdeletekey
+Root: HKCR; SubKey: porfile\Shell\Open\Command; ValueType: string; ValueData: """{app}\portugol-studio.exe"" ""%1"""; Flags: uninsdeletekey
+Root: HKCR; Subkey: porfile\DefaultIcon; ValueType: string; ValueData: {app}\icone_32.ico,0; Flags: uninsdeletekey
+Root: HKCR; SubKey: porfile\Shell\Executar\Command; ValueType: string; ValueData: """{app}\portugol-console.exe"" ""%1"""; Flags: uninsdeletekey
+[Icons]
+Name: {group}\Portugol Studio; Filename: {app}\portugol-studio.exe; WorkingDir: {app}; IconFilename: {app}\icone_16.ico; IconIndex: 0

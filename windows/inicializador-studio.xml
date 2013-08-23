@@ -5,7 +5,7 @@
   <outfile>temp\portugol-studio.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
-  <chdir></chdir>
+  <chdir>.</chdir>
   <priority>normal</priority>
   <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
@@ -37,7 +37,7 @@
   <messages>
     <startupErr>Ocorreu um erro ao tentar iniciar o Portugol Studio</startupErr>
     <bundledJreErr>O Java 7 não foi encontrado ou está corrompido</bundledJreErr>
-    <jreVersionErr>O Java 7 é necessário para executar o Portugol Studio</jreVersionErr>
+    <jreVersionErr>Para executar o Portugol Studio é necessário instalar o Java 7. Versão mínima necessária: </jreVersionErr>
     <launcherErr>O Java 7 não foi encontrado ou está corrompido</launcherErr>
     <instanceAlreadyExistsMsg>O Portugol Studio já está em execução</instanceAlreadyExistsMsg>
   </messages>
