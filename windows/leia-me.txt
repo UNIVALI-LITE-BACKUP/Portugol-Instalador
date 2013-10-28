@@ -1,0 +1,101 @@
+
+Este documento ensina como configurar um ambiente de trabalho para compilar o instalador do Portugol para Windows.
+
+Assume-se que o usuário tenha os seguintes conhecimentos:
+
+   - Criar/alterar variáveis de ambiente no sistema Windows
+   - Experiência em desenvolvimento de software e no uso das ferramentas necessárias
+
+Para que as instruções funcionem, é necessário que o repositório Portugol tenha sido clonados do GitHub com todos seus submódulos.
+Desta forma, a estrutura de diretórios deve ser a seguinte:
+
+   - Portugol
+         - Projetos
+               - Portugol-Ajuda
+               - Portugol-Console
+               - Portugol-Corretor
+               - Portugol-Exemplos
+               - Portugol-Instalador
+               - Portugol-Integracao
+               - Portugol-Integracao-CSharp
+               - Portugol-Nucleo
+               - Portugol-Relator-Erros
+               - Portugol-Studio
+               - Portugol-WebService
+
+========================================================================================================================================================
+1. Baixar os softwares necessários
+========================================================================================================================================================
+
+Faça o download de todos os softwares indicados nna lista abaixo:
+
+- Java Development Kit (JDK) 7. Disponível em: http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html?ssSourceSiteId=otnpt
+
+- Inno Setup. Disponível em: http://www.baixaki.com.br/download/inno-setup.htm
+
+- IS Tool. Disponível em: http://www.baixaki.com.br/download/istool.htm
+
+- Apache Ant. Disponível em: http://ftp.unicamp.br/pub/apache//ant/binaries/apache-ant-1.9.2-bin.zip
+
+- Launch4j. Disponível em: http://sourceforge.net/projects/launch4j/files/launch4j-3/3.0.2/launch4j-3.0.2-win32.zip/download
+
+========================================================================================================================================================
+2. Configurar o ambiente de trabalho
+========================================================================================================================================================
+
+- Instalar o JDK 7
+
+      - Adicionar a variável de ambiente JAVA_HOME, apontando para a pasta "bin" dentro do diretório onde foi instalado o JDK. Ex.: C:\Program Files (x86)\Java\jdk1.7.0_21\bin
+
+      - Alterar a variável de ambiente PATH, incluindo o seguinte diretório: %JAVA_HOME%\bin
+
+
+- Instalar o Inno Setup
+
+      - Adicionar a variável de ambiente IS_HOME, apontando o diretório onde foi instalado o Inno Setup. Ex.: C:\Program Files (x86)\Inno Setup 5
+
+      - Alterar a variável de ambiente PATH, incluindo o seguinte diretório: %IS_HOME%
+
+
+- Instalar o IS Tool (só será utilizado quando for necessário alterar alguma configuração do script de instalação)
+
+      - Executar o IS Tool. Acessar o menu Arquivo -> Preferências. No campo "Dir. do Compilador", incluir o diretório onde foi instalado o Inno Setup.
+
+
+- Instalar o Apache Ant
+
+    - Descompactar o Apache Ant em um diretório de sua preferência. Ex.: C:\Program Files\Apache Software Foundation\apache-ant-1.9.2
+
+    - Adicionar a variável de ambiente ANT_HOME, apontando para o diretório onde o Ant foi descompactado. Ex.: C:\Program Files\Apache Software Foundation\apache-ant-1.9.2
+
+    - Abrir o prompt de comando (cmd) como administrador e executar os seguintes comandos em sequência:
+
+        - cd %ANT_HOME%
+        - ant -f fetch.xml -Ddest=system
+
+    - Alterar a variável de ambiente PATH, incluindo o seguinte diretório: %ANT_HOME%\bin
+
+
+- Instalar o Launch4j
+
+    - Descompactar o Launch4j em um diretório de sua preferência. Ex.: C:\Program Files\Launch4j
+
+    - Adicionar a variável de ambiente LAUNCH4J_HOME, apontando para o diretório onde o Launch4j foi descompactado. Ex.: C:\Program Files\Launch4j
+
+    - Alterar a variável de ambiente PATH, incluindo o seguinte diretório: %LAUNCH4J_HOME%
+
+========================================================================================================================================================
+3. Compilar o instalador
+========================================================================================================================================================
+
+- Abrir o prompt de comando (cmd) como administrador
+
+- No prompt de comando, entrar na pasta do instalador windows. Ex.: cd C:\Users\Fulano\Documents\Portugol\Projetos\Portugol-Instalador\windows
+
+- No prompt de comando, executar o seguinte comando:
+
+    - compilar.bat
+
+- Aguardar a compilação do instalador
+
+- O executável do instalador será gerado na pasta dist dentro do diretório do instalador

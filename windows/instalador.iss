@@ -35,8 +35,6 @@ Name: Portugues; MessagesFile: compiler:Languages\BrazilianPortuguese.isl
 Source: ..\arquivos\bin\*; DestDir: {app}; Flags: recursesubdirs
 Source: temp\*; DestDir: {app}
 Source: ..\arquivos\icones\icone.ico; DestDir: {app}
-Source: ..\arquivos\ajuda\*; DestDir: {app}\ajuda; Flags: recursesubdirs
-Source: ..\arquivos\exemplos\*; DestDir: {app}\exemplos; Flags: recursesubdirs
 Source: ..\Arquivos\configuracoes.properties; DestDir: {userdocs}\..\.portugol
 [Icons]
 Name: {group}\Portugol Studio; Filename: {app}\portugol-studio.exe; WorkingDir: {app}; IconFilename: {app}\icone.ico; IconIndex: 0; Comment: Executar o Portugol Studio; Languages: 
@@ -49,5 +47,5 @@ Filename: {app}\portugol-studio.exe; WorkingDir: {app}; Flags: postinstall nowai
 Root: HKCR; SubKey: .por; ValueType: string; ValueData: programa_portugol; Flags: uninsdeletekey
 Root: HKCR; SubKey: programa_portugol; ValueType: string; ValueData: Programa na linguagem Portugol 2.0; Flags: uninsdeletekey
 Root: HKCR; SubKey: programa_portugol\Shell\Open\Command; ValueType: string; ValueData: """{app}\portugol-studio.exe"" ""%1"""; Flags: uninsdeletekey
-Root: HKCR; Subkey: programa_portugol\DefaultIcon; ValueType: string; ValueData: {app}\icone_32.ico,0; Flags: uninsdeletekey
+Root: HKCR; Subkey: programa_portugol\DefaultIcon; ValueType: string; ValueData: {app}\icone.ico,0; Flags: uninsdeletekey
 Root: HKCR; SubKey: programa_portugol\Shell\Executar\Command; ValueType: string; ValueData: """{app}\portugol-console.exe"" ""%1"""; Flags: uninsdeletekey
