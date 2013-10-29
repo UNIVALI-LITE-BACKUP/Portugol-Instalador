@@ -35,7 +35,7 @@ Name: Portugues; MessagesFile: compiler:Languages\BrazilianPortuguese.isl
 Source: ..\arquivos\bin\*; DestDir: {app}; Flags: recursesubdirs
 Source: temp\*; DestDir: {app}
 Source: ..\arquivos\icones\icone.ico; DestDir: {app}
-Source: ..\Arquivos\configuracoes.properties; DestDir: {userdocs}\..\.portugol
+Source: ..\arquivos\configuracoes.properties; DestDir: {userdocs}\..\.portugol
 [Icons]
 Name: {group}\Portugol Studio; Filename: {app}\portugol-studio.exe; WorkingDir: {app}; IconFilename: {app}\icone.ico; IconIndex: 0; Comment: Executar o Portugol Studio; Languages: 
 Name: {group}\Remover; Filename: {app}\unins000.exe; Comment: Remover o Portugol Studio do computador
