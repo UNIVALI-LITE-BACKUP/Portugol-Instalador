@@ -1,0 +1,15 @@
+#!/bin/sh
+
+LOCAL_INSTALACAO="/usr/bin/univali/portugol-studio"
+
+echo "Iniciando a instalação do Portugol Studio"
+
+LINHA_INICIAL=`grep -n "\[DADOS\]" $0 | awk -F ':' '{print $1}'`
+LINHA_INICIAL=`expr $LINHA_INICIAL + 1`
+
+echo "Extraindo arquivos"
+
+tail -n "+$LINHA_INICIAL" $0 | base64 -d > dados.tar.gz
+tar -vxzf dados.tar.gz
+
+exit

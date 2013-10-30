@@ -12,7 +12,7 @@
   <customProcName>false</customProcName>
   <stayAlive>false</stayAlive>
   <manifest></manifest>
-  <icon>..\arquivos\icones\icone.ico</icon>
+  <icon>portugol-studio.ico</icon>
   <jre>
     <path></path>
     <minVersion>1.7.0_1</minVersion>
