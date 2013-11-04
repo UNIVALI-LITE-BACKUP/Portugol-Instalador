@@ -1,15 +1,167 @@
 #!/bin/sh
 
-LOCAL_INSTALACAO="/usr/bin/univali/portugol-studio"
+DIR_TRABALHO=`pwd`
+DIR_INSTALACAO="/usr/local/univali"
+DIR_PORTUGOL="$DIR_INSTALACAO/portugol-studio"
+DIR_TEMPORARIO="/tmp/portugol-studio"
+ARQUIVO_SCRIPT=`readlink -f $DIR_TRABALHO/$0`
+
+#============================================================================================#
+
+clrscr()
+{
+	printf "\033c"
+}
+
+#============================================================================================#
 
 echo "Iniciando a instalação do Portugol Studio"
+echo "Lendo o pacote de instalação"
 
-LINHA_INICIAL=`grep -n "\[DADOS\]" $0 | awk -F ':' '{print $1}'`
+LINHA_INICIAL=`grep -n -a -m 2 "DADOS:" "$ARQUIVO_SCRIPT" | awk -F ':' '{print $1}' | tail -n1`
 LINHA_INICIAL=`expr $LINHA_INICIAL + 1`
+
+#============================================================================================#
+
+echo "Criando diretório de trabalho"
+
+if [ -d "$DIR_TEMPORARIO" ]; then
+
+	rm -R "$DIR_TEMPORARIO"
+fi
+
+mkdir "$DIR_TEMPORARIO"
+
+#============================================================================================#
 
 echo "Extraindo arquivos"
 
-tail -n "+$LINHA_INICIAL" $0 | base64 -d > dados.tar.gz
-tar -vxzf dados.tar.gz
+cd "$DIR_TEMPORARIO"
+tail -n "+$LINHA_INICIAL" "$ARQUIVO_SCRIPT" >> "dados.zip"
+unzip "dados.zip" > /dev/null
+rm "dados.zip"
+
+#============================================================================================#
+
+if [ -d "$DIR_PORTUGOL" ]; then
+
+	echo "Removendo versão antiga do Portugol Studio"
+	./desinstalar
+fi
+
+echo ""
+echo "Antes de continuar você deve concordar com a licença do Portugol Studio"
+echo "Utilize as teclas 'ACIMA' e 'ABAIXO' para ler a licença"
+echo "Pressione a tecla 'Q' a qualquer momento para continuar a instalação"
+echo ""
+
+read -p "Pressione ENTER para prosseguir" foo
+
+cat licenca.txt | less
+
+while true; do
+
+	clrscr
+
+	read -p "Você concorda com a licença do Portugol Studio? (S/N): " opcao
+
+		case "$opcao" in
+			
+			[sS]) break;;
+
+			[nN]) 
+
+				echo "A instalação foi abortada!"
+				rm -R "$DIR_TEMPORARIO" 
+				exit
+			;;
+		esac
+done
+
+#============================================================================================#
+
+echo ""
+echo "Copiando arquivos"
+
+if [ -d "$DIR_INSTALACAO" ]; then
+
+	rm -R "$DIR_INSTALACAO"
+fi
+
+mkdir -p "$DIR_INSTALACAO"
+
+mv "desinstalar" ./bin
+mv ./bin "$DIR_PORTUGOL"
+mv portugol-studio.png "$DIR_PORTUGOL"
+
+echo "Icon=$DIR_PORTUGOL/portugol-studio.png" >> "portugol-studio.desktop"
+cp portugol-studio.desktop "$DIR_PORTUGOL"
+
+INIC_STUDIO="$DIR_PORTUGOL/iniciar-studio"
+touch "$INIC_STUDIO"
+echo '#!/bin/sh' >> "$INIC_STUDIO"
+echo "\"$DIR_PORTUGOL/iniciar\" \"$DIR_PORTUGOL/portugol-studio.jar\" \$@" >> "$INIC_STUDIO"
+
+INIC_CONSOLE="$DIR_PORTUGOL/iniciar-console"
+touch "$INIC_CONSOLE"
+echo '#!/bin/sh' >> "$INIC_CONSOLE"
+echo "\"$DIR_PORTUGOL/iniciar\" \"$DIR_PORTUGOL/portugol-console.jar\" \$@" >> "$INIC_CONSOLE"
+
+
+chmod 755 -R "$DIR_PORTUGOL"
+
+#============================================================================================#
+
+echo "Configurando atalhos e ligações"
+
+if [ ! -f "/usr/share/applications/portugol-studio.desktop" ]; then
+
+	ln -s "$DIR_PORTUGOL/portugol-studio.desktop" "/usr/share/applications/portugol-studio.desktop"
+fi
+
+if [ ! -f "/usr/bin/portugol-studio" ]; then
+
+	ln -s "$DIR_PORTUGOL/iniciar-studio" "/usr/bin/portugol-studio"
+
+fi
+
+if [ ! -f "/usr/bin/portugol-console" ]; then
+
+	ln -s "$DIR_PORTUGOL/iniciar-console" "/usr/bin/portugol-console"
+fi
+
+DIR_HOME=`ls /home`
+
+for NOME_USUARIO in $DIR_HOME; do
+
+	ARQUIVO_DIR="/home/$NOME_USUARIO/.config/user-dirs.dirs"
+
+	if [ -f "$ARQUIVO_DIR" ]; then
+
+		DIR_AREA_DE_TRABALHO=`cat "$ARQUIVO_DIR" | grep "XDG_DESKTOP_DIR" | awk -F 'HOME/' '{print $2}' | sed -e 's/\"//'`
+		DIR_AREA_DE_TRABALHO="/home/$NOME_USUARIO/$DIR_AREA_DE_TRABALHO"
+
+		if [ ! -f "$DIR_AREA_DE_TRABALHO/portugol-studio.desktop" ]; then
+
+			cp portugol-studio.desktop "$DIR_AREA_DE_TRABALHO"
+			chown "$NOME_USUARIO:$NOME_USUARIO" "$DIR_AREA_DE_TRABALHO/portugol-studio.desktop"
+			chmod 755 "$DIR_AREA_DE_TRABALHO/portugol-studio.desktop"
+		fi
+	fi
+
+done
+
+#============================================================================================#
+
+echo "Removendo arquivos temporários"
+
+rm -R "$DIR_TEMPORARIO"
+
+#============================================================================================#
+
+echo ""
+echo "Instalação concluída"
 
 exit
+
+#============================================================================================#

@@ -2,45 +2,57 @@
 
 echo "Iniciando a criação do instalador para Linux"
 
-#if [ -d "temp" ]; then
+if [ -d "temp" ]; then
 
-#	rm -R "temp"
+	rm -R "temp"
+fi
 
-#fi
+if [ -d "dist" ]; then
+
+	rm -R "dist"
+
+fi
 
 mkdir "temp"
 
 echo "Compilando o Portugol Studio"
 echo "Esta tarefa pode levar alguns minutos, por favor aguarde"
 
-#ant -buildfile ../../Portugol-Studio/build.xml distribuicao > /dev/null
+ant -buildfile ../../Portugol-Studio/build.xml distribuicao > /dev/null
 
 echo "Compilação finalizada"
 echo "Configurando arquivos de instalação"
 
-cp -R ../arquivos/bin temp/bin
+mv ../arquivos/bin temp
 rm -f temp/bin/launch.jnlp
 rm -f temp/bin/launch.html
 
 cp portugol-studio.desktop temp
 cp portugol-studio.png temp
+cp ../arquivos/licenca.txt temp
+cp iniciar temp/bin/iniciar
+cp desinstalar temp
 
 echo "Comprimindo arquivos de instalação"
 
-tar -czf "dados.tar.gz" -C temp . > /dev/null
+cd temp
+zip -r -9 ../dados.zip . > /dev/null
+cd ..
 
 rm -R temp/*
-mv dados.tar.gz temp
+mv dados.zip temp
 
 echo "Criando instalador"
 
 cp instalar temp
 echo "" >> temp/instalar
-echo "[DADOS]" >> temp/instalar
+echo "DADOS:" >> temp/instalar
 
-base64 < temp/dados.tar.gz >> temp/instalar
+cat temp/dados.zip >> temp/instalar
 
-rm temp/dados.tar.gz
+rm temp/dados.zip
+mv "temp" "dist"
+mv "dist/instalar" "dist/instalar-ps-linux"
+
 echo "Concluído"
-#rm -R "temp"
-#rm -R "dist"
+
