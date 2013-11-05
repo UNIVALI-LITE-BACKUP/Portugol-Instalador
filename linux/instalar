@@ -73,7 +73,7 @@ done
 
 #============================================================================================#
 
-./desinstalar
+sh desinstalar
 
 echo ""
 echo "Copiando arquivos"
