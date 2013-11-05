@@ -32,6 +32,8 @@ cp portugol-studio.png temp
 cp ../arquivos/licenca.txt temp
 cp iniciar temp/bin/iniciar
 cp desinstalar temp
+cp portugol.lang temp
+cp portugol.nanorc temp
 
 echo "Comprimindo arquivos de instalação"
 

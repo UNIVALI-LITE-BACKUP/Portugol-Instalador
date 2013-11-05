@@ -5,21 +5,54 @@ DIR_PORTUGOL="$DIR_INSTALACAO/portugol-studio"
 
 if [ -d "$DIR_PORTUGOL" ]; then
 
+#============================================================================================#
+
+	echo "Removendo o Portugol Studio"
+
 	if [ -f "/usr/share/applications/portugol-studio.desktop" ]; then
 
 		rm "/usr/share/applications/portugol-studio.desktop"
 	fi
 
+#============================================================================================#
+
 	if [ -f "/usr/bin/portugol-studio" ]; then
 
 		rm "/usr/bin/portugol-studio"
-
 	fi
 
 	if [ -f "/usr/bin/portugol-console" ]; then
 
 		rm "/usr/bin/portugol-console"
 	fi
+
+#============================================================================================#
+
+	if [ -f "/usr/share/gtksourceview-2.0/language-specs/portugol.lang" ]; then
+
+		rm "/usr/share/gtksourceview-2.0/language-specs/portugol.lang"
+
+	fi
+
+	if [ -f "/usr/share/gtksourceview-3.0/language-specs/portugol.lang" ]; then
+
+		rm "/usr/share/gtksourceview-3.0/language-specs/portugol.lang"
+	fi
+
+#============================================================================================#
+
+	if [ -f "/usr/share/nano/portugol.nanorc" ]; then
+
+		rm "/usr/share/nano/portugol.nanorc"
+
+		if grep -q "portugol.nanorc" "/etc/nanorc"; then
+
+			sed -i "/## Portugol 2.0/d" "/etc/nanorc"
+			sed -i "/portugol.nanorc/d" "/etc/nanorc"
+		fi
+	fi
+
+#============================================================================================#
 
 	rm -R "$DIR_PORTUGOL"
 
@@ -41,4 +74,10 @@ if [ -d "$DIR_PORTUGOL" ]; then
 		fi
 
 	done
+
+	echo "A remoção do Portugol Studio foi concluída"
+
+#============================================================================================#
+
 fi
+

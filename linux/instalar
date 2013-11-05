@@ -42,13 +42,6 @@ unzip "dados.zip" > /dev/null
 rm "dados.zip"
 
 #============================================================================================#
-
-if [ -d "$DIR_PORTUGOL" ]; then
-
-	echo "Removendo versão antiga do Portugol Studio"
-	./desinstalar
-fi
-
 echo ""
 echo "Antes de continuar você deve concordar com a licença do Portugol Studio"
 echo "Utilize as teclas 'ACIMA' e 'ABAIXO' para ler a licença"
@@ -80,6 +73,8 @@ done
 
 #============================================================================================#
 
+./desinstalar
+
 echo ""
 echo "Copiando arquivos"
 
@@ -109,6 +104,48 @@ echo "\"$DIR_PORTUGOL/iniciar\" \"$DIR_PORTUGOL/portugol-console.jar\" \$@" >> "
 
 
 chmod 755 -R "$DIR_PORTUGOL"
+
+#============================================================================================#
+
+echo "Configurando o gedit"
+
+
+if [ -d "/usr/share/gtksourceview-2.0" ]; then
+
+	cp "portugol.lang" "/usr/share/gtksourceview-2.0/language-specs"
+	chmod 644 "/usr/share/gtksourceview-2.0/language-specs/portugol.lang"
+
+fi
+
+if [ -d "/usr/share/gtksourceview-3.0" ]; then
+
+	cp "portugol.lang" "/usr/share/gtksourceview-3.0/language-specs"
+	chmod 644 "/usr/share/gtksourceview-3.0/language-specs/portugol.lang"
+
+fi
+
+#============================================================================================#
+
+echo "Configurando o nano"
+
+if [ -f "/etc/nanorc" ]; then
+
+	if [ ! -d "/usr/share/nano" ]; then
+
+		mkdir -p "/usr/share/nano"
+
+	fi
+
+	cp "portugol.nanorc" "/usr/share/nano"
+	chmod 644 "/usr/share/nano/portugol.nanorc"
+
+	if ! grep -q "portugol.nanorc" "/etc/nanorc"; then
+
+		echo "" >> "/etc/nanorc" 
+		echo "## Portugol 2.0" >> "/etc/nanorc" 
+		echo "include /usr/share/nano/portugol.nanorc" >> "/etc/nanorc" 
+	fi
+fi
 
 #============================================================================================#
 
