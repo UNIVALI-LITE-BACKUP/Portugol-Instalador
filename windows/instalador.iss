@@ -3,7 +3,7 @@
 
 [Setup]
 OutputDir=dist
-OutputBaseFilename=ps_setup
+OutputBaseFilename=ps-windows
 VersionInfoVersion=2.0
 VersionInfoCompany=UNIVALI - Universidade do Vale do Itajaí
 VersionInfoDescription=Ambiente de Desenvolvimento Integrado para a linguagem Portugol 2.0
@@ -35,7 +35,6 @@ Name: Portugues; MessagesFile: compiler:Languages\BrazilianPortuguese.isl
 Source: ..\arquivos\bin\*; DestDir: {app}; Flags: recursesubdirs
 Source: temp\*; DestDir: {app}
 Source: portugol-studio.ico; DestDir: {app}
-Source: ..\arquivos\configuracoes.properties; DestDir: {userdocs}\..\.portugol
 [Icons]
 Name: {group}\Portugol Studio; Filename: {app}\portugol-studio.exe; WorkingDir: {app}; IconFilename: {app}\portugol-studio.ico; IconIndex: 0; Comment: Executar o Portugol Studio; Languages: 
 Name: {group}\Remover; Filename: {app}\unins000.exe; Comment: Remover o Portugol Studio do computador
