@@ -54,7 +54,7 @@ cat temp/dados.zip >> temp/instalar
 
 rm temp/dados.zip
 mv "temp" "dist"
-mv "dist/instalar" "dist/instalar-ps-linux"
+mv "dist/instalar" "dist/ps-linux"
 
 echo "Concluído"
 
