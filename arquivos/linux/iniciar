@@ -1,8 +1,0 @@
-#!/bin/sh
-
-#TODO: verificar se java está instalado e se é a versão correta
-
-JAR="$1"
-shift
-printf "\033c"
-java -Xms128m -Xmx256m -jar "$JAR" $@
