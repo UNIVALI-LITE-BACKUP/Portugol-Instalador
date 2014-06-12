@@ -1,0 +1,401 @@
+<project>
+    <shortName>portugolstudio</shortName>
+    <fullName>Portugol Studio</fullName>
+    <version>2.1</version>
+    <installerFilename>ps-${product_version}-${platform_name}.${platform_exec_suffix}</installerFilename>
+    <licenseFile>licenca.txt</licenseFile>
+    <wrapLicenseFileText>0</wrapLicenseFileText>
+    <leftImage>banner_lateral.png</leftImage>
+    <logoImage>logo_topo.png</logoImage>
+    <splashImage>splash.png</splashImage>
+    <defaultLanguage>pt_BR</defaultLanguage>
+    <componentList>
+        <component>
+            <name>default</name>
+            <description>Default Component</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <desktopShortcutList>
+                <shortcut>
+                    <comment>Executa o Portugol Studio</comment>
+                    <exec>${javaw_executable.unix} -jar inicializador-ps.jar</exec>
+                    <icon>${installdir.unix}/aplicacao/icones/linux/portugol-studio.png</icon>
+                    <name>{Portugol Studio}</name>
+                    <path>${installdir.unix}</path>
+                    <platforms>all</platforms>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${javaw_executable}</windowsExec>
+                    <windowsExecArgs>-jar inicializador-ps.jar</windowsExecArgs>
+                    <windowsIcon>${installdir}\aplicacao\icones\windows\portugol-studio.ico</windowsIcon>
+                    <windowsPath>${installdir}</windowsPath>
+                </shortcut>
+            </desktopShortcutList>
+            <folderList>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfiles</name>
+                    <platforms>all</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <allowWildcards>1</allowWildcards>
+                            <excludeFiles>*/temp;*/atualizacao.script</excludeFiles>
+                            <origin>arquivos/compartilhados/*</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Remove o ${product_fullname} do seu computador</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Remover o ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runAsAdmin>0</runAsAdmin>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfileslinux</name>
+                    <platforms>linux</platforms>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}/aplicacao/icones</destination>
+                    <name>programfileswindows</name>
+                    <platforms>windows</platforms>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfilesosx</name>
+                    <platforms>osx</platforms>
+                </folder>
+                <folder>
+                    <description>Arquivos Temporarios</description>
+                    <destination>${system_temp_directory}/portugols-studio</destination>
+                    <name>tempwindows</name>
+                    <platforms>windows</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>arquivos/windows/updateshell.exe</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+            <startMenuShortcutList>
+                <startMenuShortcut>
+                    <comment>Remove o ${product_fullname} do seu computador</comment>
+                    <name>Remover o ${product_fullname}</name>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon></windowsIcon>
+                    <windowsPath>${installdir}/</windowsPath>
+                </startMenuShortcut>
+                <startMenuShortcut>
+                    <comment>Executa o Portugol Studio</comment>
+                    <name>Portugol Studio</name>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${javaw_executable}</windowsExec>
+                    <windowsExecArgs>-jar inicializador-ps.jar</windowsExecArgs>
+                    <windowsIcon>${installdir}\aplicacao\icones\windows\portugol-studio.ico</windowsIcon>
+                    <windowsPath>${installdir}</windowsPath>
+                </startMenuShortcut>
+            </startMenuShortcutList>
+        </component>
+    </componentList>
+    <initializationActionList>
+        <setInstallerVariable>
+            <name>installdir</name>
+            <value>${windows_folder_common_appdata}\UNIVALI\Portugol Studio</value>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </setInstallerVariable>
+        <setInstallerVariable>
+            <name>installdir</name>
+            <value>/usr/local/univali/portugol-studio</value>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </setInstallerVariable>
+    </initializationActionList>
+    <readyToInstallActionList>
+        <autodetectJava>
+            <customErrorMessage>O Portugol Studio necessita do Java versão 1.7 ou superior para funcionar, no entanto, ele não foi encontrado em seu computador. Por favor, instale e configure corretamente o Java antes de instalar o Portugol Studio.</customErrorMessage>
+            <progressText>Detectando versões do Java existentes no computador</progressText>
+            <promptUser>0</promptUser>
+            <selectionOrder>newest</selectionOrder>
+            <show>0</show>
+            <validVersionList>
+                <validVersion>
+                    <bitness></bitness>
+                    <maxVersion></maxVersion>
+                    <minVersion>1.7</minVersion>
+                    <requireJDK>0</requireJDK>
+                    <vendor></vendor>
+                </validVersion>
+            </validVersionList>
+        </autodetectJava>
+        <actionGroup>
+            <actionList>
+                <setInstallerVariableFromRegEx>
+                    <name>java_executable</name>
+                    <pattern>/</pattern>
+                    <show>0</show>
+                    <substitution>\</substitution>
+                    <text>${java_executable}</text>
+                </setInstallerVariableFromRegEx>
+                <setInstallerVariableFromRegEx>
+                    <name>javaw_executable</name>
+                    <pattern>/</pattern>
+                    <show>0</show>
+                    <substitution>\</substitution>
+                    <text>${javaw_executable}</text>
+                </setInstallerVariableFromRegEx>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+        <actionGroup>
+            <actionList>
+                <registryGet>
+                    <key>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{EEF28793-B766-42EE-9534-B875AE2660C5}_is1</key>
+                    <name>UninstallString</name>
+                    <progressText>Procurando por versões anteriores do Portugol Studio</progressText>
+                    <show>0</show>
+                    <variable>previous_release_unninstaller</variable>
+                </registryGet>
+                <setInstallerVariableFromRegEx>
+                    <name>previous_release_unninstaller</name>
+                    <pattern>"</pattern>
+                    <progressText>Procurando por versões anteriores do Portugol Studio</progressText>
+                    <substitution></substitution>
+                    <text>${previous_release_unninstaller}</text>
+                </setInstallerVariableFromRegEx>
+                <runProgram>
+                    <program>${previous_release_unninstaller}</program>
+                    <programArguments>/VERYSILENT</programArguments>
+                    <progressText>Removendo versão anterior do Portugol Studio</progressText>
+                    <show>0</show>
+                </runProgram>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+                <registryTest>
+                    <key>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{EEF28793-B766-42EE-9534-B875AE2660C5}_is1</key>
+                    <logic>exists</logic>
+                    <name></name>
+                </registryTest>
+            </ruleList>
+        </actionGroup>
+    </readyToInstallActionList>
+    <postInstallationActionList>
+        <actionGroup>
+            <progressText>Criando associações de arquivos</progressText>
+            <show>0</show>
+            <actionList>
+                <associateWindowsFileExtension>
+                    <extensions>.por</extensions>
+                    <friendlyName></friendlyName>
+                    <icon>${installdir}\aplicacao\icones\windows\arquivo-por.ico</icon>
+                    <mimeType>text\portugol</mimeType>
+                    <progID>Portugol.Algoritmo</progID>
+                    <show>0</show>
+                    <commandList>
+                        <command>
+                            <makeDefault>1</makeDefault>
+                            <runProgram>${javaw_executable}</runProgram>
+                            <runProgramArguments>-jar "${installdir}\inicializador-ps.jar" "%1"</runProgramArguments>
+                            <verb>Abrir</verb>
+                        </command>
+                        <command>
+                            <makeDefault>0</makeDefault>
+                            <runProgram>${java_executable}</runProgram>
+                            <runProgramArguments>-jar "${installdir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
+                            <verb>Executar em modo console</verb>
+                        </command>
+                        <command>
+                            <makeDefault>0</makeDefault>
+                            <runProgram>${javaw_executable}</runProgram>
+                            <runProgramArguments>-jar "${installdir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
+                            <verb>Executar em modo Gráfico</verb>
+                        </command>
+                    </commandList>
+                </associateWindowsFileExtension>
+                <runProgram>
+                    <program>${system_temp_directory}\portugol-studio\updateshell.exe</program>
+                    <programArguments></programArguments>
+                    <show>0</show>
+                </runProgram>
+                <clearWindowsACL>
+                    <files>${installdir}</files>
+                    <matchHiddenFiles>1</matchHiddenFiles>
+                    <progressText>Definindo permissões de arquivo</progressText>
+                    <run>0</run>
+                    <show>0</show>
+                </clearWindowsACL>
+                <setWindowsACL>
+                    <action>allow</action>
+                    <files>${installdir};${installdir}/*</files>
+                    <progressText>Definindo permissões de arquivo</progressText>
+                    <recurseContainers>1</recurseContainers>
+                    <recurseObjects>1</recurseObjects>
+                    <show>0</show>
+                </setWindowsACL>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+    </postInstallationActionList>
+    <postUninstallationActionList>
+        <deleteFile>
+            <abortOnError>0</abortOnError>
+            <path>${installdir}</path>
+            <progressText>Removendo arquivos temporários do Portugol Studio</progressText>
+            <show>0</show>
+            <showMessageOnError>0</showMessageOnError>
+            <ruleList>
+                <fileExists>
+                    <path>${installdir}</path>
+                </fileExists>
+            </ruleList>
+        </deleteFile>
+        <actionGroup>
+            <progressText>Removendo associações de arquivo</progressText>
+            <show>0</show>
+            <actionList>
+                <removeWindowsFileAssociation>
+                    <extensions>.por</extensions>
+                    <mimeType>text\portugol</mimeType>
+                    <progID>Portugol.Algoritmo</progID>
+                    <show>0</show>
+                </removeWindowsFileAssociation>
+                <runProgram>
+                    <program>${system_temp_directory}\portugol-studio\updateshell.exe</program>
+                    <programArguments></programArguments>
+                    <show>0</show>
+                </runProgram>
+                <deleteFile>
+                    <abortOnError>0</abortOnError>
+                    <path>${system_temp_directory}\portugol-studio</path>
+                    <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+    </postUninstallationActionList>
+    <cdromDirectory></cdromDirectory>
+    <compressionAlgorithm>lzma-ultra</compressionAlgorithm>
+    <defaultUnixDirectoryPermissions>777</defaultUnixDirectoryPermissions>
+    <defaultUnixFilePermissions>777</defaultUnixFilePermissions>
+    <enableRollback>1</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <saveRelativePaths>1</saveRelativePaths>
+    <vendor>UNIVALI</vendor>
+    <finalPageActionList>
+        <runProgram>
+            <abortOnError>0</abortOnError>
+            <program>${javaw_executable}</program>
+            <programArguments>-jar "${installdir}\inicializador-ps.jar" &amp;</programArguments>
+            <progressText>Executar o Portugol Studio agora</progressText>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </runProgram>
+        <runProgram>
+            <abortOnError>0</abortOnError>
+            <program>${javaw_executable}</program>
+            <programArguments>-jar "${installdir}/inicializador-ps.jar" &amp;</programArguments>
+            <progressText>Executar o Portugol Studio agora</progressText>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </runProgram>
+    </finalPageActionList>
+    <parameterList>
+        <parameterGroup>
+            <name>apresentacao</name>
+            <title>Apresentação</title>
+            <explanation></explanation>
+            <value></value>
+            <default></default>
+            <insertBefore>readytoinstall</insertBefore>
+            <parameterList>
+                <labelParameter>
+                    <name>descricao1</name>
+                    <description>
+Obrigado por seu interesse no Portugol Studio.
+
+O Portugol Studio é um software livre e de código aberto licenciado pela LGPL, isto significa que você pode utilizá-lo e modificá-lo livremente.
+
+Se você deseja saber mais sobre o projeto e/ou contribuir com o desenvolvimento, visite a página do Portugol Studio em:
+</description>
+                    <explanation></explanation>
+                    <image></image>
+                </labelParameter>
+                <linkParameter>
+                    <name>linkstudio</name>
+                    <description>http://www.portugol-studio.br</description>
+                    <explanation></explanation>
+                    <clickedActionList>
+                        <launchBrowser>
+                            <abortOnError>0</abortOnError>
+                            <customErrorMessage>Ocorreu um erro ao tentar abrir o navegador de Internet</customErrorMessage>
+                            <show>0</show>
+                            <url>http://www.portugol-studio.br</url>
+                        </launchBrowser>
+                    </clickedActionList>
+                </linkParameter>
+                <labelParameter>
+                    <name>continuar</name>
+                    <description>
+Clique em "Avançar" para iniciar a instalação</description>
+                    <explanation></explanation>
+                    <image></image>
+                </labelParameter>
+            </parameterList>
+            <validationActionList>
+                <setInstallerVariable>
+                    <name>next_page</name>
+                    <show>0</show>
+                    <value>installation</value>
+                </setInstallerVariable>
+            </validationActionList>
+        </parameterGroup>
+    </parameterList>
+</project>
+
