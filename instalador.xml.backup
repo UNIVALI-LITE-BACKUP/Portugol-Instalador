@@ -80,17 +80,6 @@
                     <name>programfilesosx</name>
                     <platforms>osx</platforms>
                 </folder>
-                <folder>
-                    <description>Arquivos Temporarios</description>
-                    <destination>${system_temp_directory}/portugols-studio</destination>
-                    <name>tempwindows</name>
-                    <platforms>windows</platforms>
-                    <distributionFileList>
-                        <distributionFile>
-                            <origin>arquivos/windows/updateshell.exe</origin>
-                        </distributionFile>
-                    </distributionFileList>
-                </folder>
             </folderList>
             <startMenuShortcutList>
                 <startMenuShortcut>
@@ -114,6 +103,37 @@
                     <windowsPath>${installdir}</windowsPath>
                 </startMenuShortcut>
             </startMenuShortcutList>
+        </component>
+        <component>
+            <name>ferramentas</name>
+            <description>Ferramentas</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>0</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>Windows</description>
+                    <destination>${system_temp_directory}\portugol-studio</destination>
+                    <name>ferramentas_windows</name>
+                    <platforms>windows</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>arquivos/windows/update_shell.dll</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Linux</description>
+                    <destination>${system_temp_directory}/portugol-studio</destination>
+                    <name>ferramentas_linux</name>
+                    <platforms>all</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>arquivos/linux/desinstalar</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
         </component>
     </componentList>
     <initializationActionList>
@@ -210,6 +230,40 @@
                 </registryTest>
             </ruleList>
         </actionGroup>
+        <actionGroup>
+            <progressText>Removendo versão anterior do Portugol Studio</progressText>
+            <show>0</show>
+            <actionList>
+                <createDirectory>
+                    <path>${system_temp_directory}/portugol-studio</path>
+                    <show>0</show>
+                </createDirectory>
+                <unpackFile>
+                    <component>ferramentas</component>
+                    <destination>${system_temp_directory}/portugol-studio/desinstalar</destination>
+                    <folder>ferramentas_linux</folder>
+                    <origin>desinstalar</origin>
+                    <show>0</show>
+                </unpackFile>
+                <runProgram>
+                    <program>sh</program>
+                    <programArguments>${system_temp_directory}/portugol-studio/desinstalar</programArguments>
+                    <show>0</show>
+                </runProgram>
+                <deleteFile>
+                    <path>${system_temp_directory}/portugol-studio</path>
+                    <show>0</show>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+                <fileExists>
+                    <path>${installdir}</path>
+                </fileExists>
+            </ruleList>
+        </actionGroup>
     </readyToInstallActionList>
     <postInstallationActionList>
         <actionGroup>
@@ -244,10 +298,27 @@
                         </command>
                     </commandList>
                 </associateWindowsFileExtension>
-                <runProgram>
-                    <program>${system_temp_directory}\portugol-studio\updateshell.exe</program>
-                    <programArguments></programArguments>
+                <createDirectory>
+                    <abortOnError>0</abortOnError>
+                    <path>${system_temp_directory}\portugol-studio</path>
                     <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
+                </createDirectory>
+                <unpackFile>
+                    <abortOnError>0</abortOnError>
+                    <component>ferramentas</component>
+                    <destination>${system_temp_directory}\portugol-studio\update_shell.dll</destination>
+                    <folder>ferramentas_windows</folder>
+                    <origin>update_shell.dll</origin>
+                    <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
+                </unpackFile>
+                <runProgram>
+                    <abortOnError>0</abortOnError>
+                    <program>rundll32</program>
+                    <programArguments>${system_temp_directory.dos}\portugol-studio\update_shell.dll,UpdateShell</programArguments>
+                    <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
                 </runProgram>
                 <clearWindowsACL>
                     <files>${installdir}</files>
@@ -271,7 +342,56 @@
                 </platformTest>
             </ruleList>
         </actionGroup>
+        <actionGroup>
+            <progressText>Criando associações de arquivos</progressText>
+            <show>0</show>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
     </postInstallationActionList>
+    <postUninstallerCreationActionList>
+        <actionGroup>
+            <abortOnError>0</abortOnError>
+            <progressText>Configurando o desinstalador</progressText>
+            <show>0</show>
+            <showMessageOnError>0</showMessageOnError>
+            <actionList>
+                <registrySet>
+                    <abortOnError>0</abortOnError>
+                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio 2.1</key>
+                    <name>Comments</name>
+                    <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
+                    <type>REG_SZ</type>
+                    <value>Ambiente de programação para a linguagem Portugol 2.0</value>
+                </registrySet>
+                <registrySet>
+                    <abortOnError>0</abortOnError>
+                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio 2.1</key>
+                    <name>DisplayIcon</name>
+                    <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
+                    <type>REG_SZ</type>
+                    <value>${installdir}\aplicacao\icones\windows\portugol-studio.ico</value>
+                </registrySet>
+                <registryDelete>
+                    <abortOnError>0</abortOnError>
+                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio 2.1</key>
+                    <name>DisplayVersion</name>
+                    <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
+                </registryDelete>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+    </postUninstallerCreationActionList>
     <postUninstallationActionList>
         <deleteFile>
             <abortOnError>0</abortOnError>
@@ -296,9 +416,11 @@
                     <show>0</show>
                 </removeWindowsFileAssociation>
                 <runProgram>
-                    <program>${system_temp_directory}\portugol-studio\updateshell.exe</program>
-                    <programArguments></programArguments>
+                    <abortOnError>0</abortOnError>
+                    <program>rundll32</program>
+                    <programArguments>${system_temp_directory.dos}\portugol-studio\update_shell.dll,UpdateShell</programArguments>
                     <show>0</show>
+                    <showMessageOnError>0</showMessageOnError>
                 </runProgram>
                 <deleteFile>
                     <abortOnError>0</abortOnError>
@@ -320,8 +442,12 @@
     <defaultUnixFilePermissions>777</defaultUnixFilePermissions>
     <enableRollback>1</enableRollback>
     <enableTimestamp>1</enableTimestamp>
+    <height>450</height>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
     <saveRelativePaths>1</saveRelativePaths>
+    <splashScreenDelay>3000</splashScreenDelay>
     <vendor>UNIVALI</vendor>
+    <width>580</width>
     <finalPageActionList>
         <runProgram>
             <abortOnError>0</abortOnError>
