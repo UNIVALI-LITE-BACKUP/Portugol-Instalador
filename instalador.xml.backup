@@ -41,7 +41,7 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <excludeFiles>*/temp;*/atualizacao.script</excludeFiles>
+                            <excludeFiles>*/temp;*/atualizacao.script;*/mutex</excludeFiles>
                             <origin>arquivos/compartilhados/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
