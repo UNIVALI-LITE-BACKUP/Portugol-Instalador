@@ -361,7 +361,7 @@
             <actionList>
                 <registrySet>
                     <abortOnError>0</abortOnError>
-                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio 2.1</key>
+                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio ${product_version}</key>
                     <name>Comments</name>
                     <show>0</show>
                     <showMessageOnError>0</showMessageOnError>
@@ -370,7 +370,7 @@
                 </registrySet>
                 <registrySet>
                     <abortOnError>0</abortOnError>
-                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio 2.1</key>
+                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio ${product_version}</key>
                     <name>DisplayIcon</name>
                     <show>0</show>
                     <showMessageOnError>0</showMessageOnError>
@@ -379,7 +379,7 @@
                 </registrySet>
                 <registryDelete>
                     <abortOnError>0</abortOnError>
-                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio 2.1</key>
+                    <key>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Portugol Studio ${product_version}</key>
                     <name>DisplayVersion</name>
                     <show>0</show>
                     <showMessageOnError>0</showMessageOnError>
