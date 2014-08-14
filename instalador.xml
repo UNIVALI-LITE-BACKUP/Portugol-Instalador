@@ -343,8 +343,36 @@
             </ruleList>
         </actionGroup>
         <actionGroup>
-            <progressText>Criando associações de arquivos</progressText>
+            <customErrorMessage>Erro ao ajustar as permissões de arquivo</customErrorMessage>
+            <progressText>Ajustando permissões de arquivos</progressText>
             <show>0</show>
+            <actionList>
+                <changePermissions>
+                    <customErrorMessage>Não foi possível definir as permissões de arquivos</customErrorMessage>
+                    <files>${installdir}</files>
+                    <permissions>0777</permissions>
+                    <show>0</show>
+                </changePermissions>
+                <changePermissions>
+                    <files>${installdir}/*</files>
+                    <permissions>0777</permissions>
+                    <show>0</show>
+                </changePermissions>
+                <changePermissions>
+                    <files>${installdir}/**</files>
+                    <permissions>0777</permissions>
+                    <show>0</show>
+                </changePermissions>
+                <changePermissions>
+                    <files>${installdir}/**/*</files>
+                    <permissions>0777</permissions>
+                    <show>0</show>
+                </changePermissions>
+                <changePermissions>
+                    <files>${installdir}/**/**</files>
+                    <permissions>0777</permissions>
+                </changePermissions>
+            </actionList>
             <ruleList>
                 <platformTest>
                     <type>linux</type>
@@ -454,20 +482,11 @@
             <program>${javaw_executable}</program>
             <programArguments>-jar "${installdir}\inicializador-ps.jar" &amp;</programArguments>
             <progressText>Executar o Portugol Studio agora</progressText>
+            <useMSDOSPath>0</useMSDOSPath>
+            <workingDirectory>${installdir}</workingDirectory>
             <ruleList>
                 <platformTest>
                     <type>windows</type>
-                </platformTest>
-            </ruleList>
-        </runProgram>
-        <runProgram>
-            <abortOnError>0</abortOnError>
-            <program>${javaw_executable}</program>
-            <programArguments>-jar "${installdir}/inicializador-ps.jar" &amp;</programArguments>
-            <progressText>Executar o Portugol Studio agora</progressText>
-            <ruleList>
-                <platformTest>
-                    <type>linux</type>
                 </platformTest>
             </ruleList>
         </runProgram>
