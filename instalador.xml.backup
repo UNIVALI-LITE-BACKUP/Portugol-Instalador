@@ -102,10 +102,10 @@
                     <platforms>linux</platforms>
                     <distributionFileList>
                         <distributionFile>
-                            <origin>arquivos/linux/executar-console-linux</origin>
+                            <origin>arquivos/linux/executar-console-linux.sh</origin>
                         </distributionFile>
                         <distributionFile>
-                            <origin>arquivos/linux/executar-studio-linux</origin>
+                            <origin>arquivos/linux/executar-studio-linux.sh</origin>
                         </distributionFile>
                     </distributionFileList>
                 </folder>

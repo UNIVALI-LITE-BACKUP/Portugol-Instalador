@@ -201,7 +201,7 @@
                 <setInstallerVariable>
                     <name>install_java_dir</name>
                     <persist>1</persist>
-                    <value>${install_app_dir}\java</value>
+                    <value>${install_app_dir}\java\java-windows</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_exe</name>
@@ -240,7 +240,7 @@
                 <setInstallerVariable>
                     <name>install_java_dir</name>
                     <persist>1</persist>
-                    <value>${install_app_dir}/java</value>
+                    <value>${install_app_dir}/java/java-linux</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_exe</name>
@@ -279,7 +279,7 @@
                 <setInstallerVariable>
                     <name>install_java_dir</name>
                     <persist>1</persist>
-                    <value>${install_app_dir}/java</value>
+                    <value>${install_app_dir}/java/java-mac</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_exe</name>
