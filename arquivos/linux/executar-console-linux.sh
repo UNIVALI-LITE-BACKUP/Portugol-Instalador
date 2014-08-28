@@ -3,7 +3,7 @@
 caminho_script=$(readlink -f "$0")
 caminho_portugol=$(dirname "$caminho_script")
 caminho_aplicacao="$caminho_portugol/aplicacao"
-caminho_java="$caminho_portugol/java/bin/java"
+caminho_java="$caminho_portugol/java/java-linux/bin/java"
 
 clear
 clear
