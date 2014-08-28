@@ -22,7 +22,7 @@
 -->
 <language id="portugol20" _name="Portugol 2.0" version="2.0" _section="Sources">
   <metadata>
-    <property name="mimetypes">text/x-portugol;application/x-portugol</property>
+    <property name="mimetypes">application/x-portugol</property>
     <property name="globs">*.por</property>
     <property name="line-comment-start">//</property>
     <property name="block-comment-start">/*</property>

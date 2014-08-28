@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /Applications/Portugol\ Studio.app/Contents/Resources/IDE
+java -jar inicializador-ps.jar "$@"
