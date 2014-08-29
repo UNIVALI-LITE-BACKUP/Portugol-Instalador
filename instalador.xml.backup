@@ -201,7 +201,7 @@
                 <setInstallerVariable>
                     <name>install_java_dir</name>
                     <persist>1</persist>
-                    <value>${install_app_dir}\java</value>
+                    <value>${install_app_dir}\java\java-windows</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_exe</name>
@@ -240,7 +240,7 @@
                 <setInstallerVariable>
                     <name>install_java_dir</name>
                     <persist>1</persist>
-                    <value>${install_app_dir}/java</value>
+                    <value>${install_app_dir}/java/java-linux</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_exe</name>
@@ -279,7 +279,7 @@
                 <setInstallerVariable>
                     <name>install_java_dir</name>
                     <persist>1</persist>
-                    <value>${install_app_dir}/java</value>
+                    <value>${install_app_dir}/java/java-mac</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_exe</name>
@@ -300,6 +300,64 @@
         </actionGroup>
     </initializationActionList>
     <readyToInstallActionList>
+        <actionGroup>
+            <actionList>
+                <showProgressDialog>
+                    <progressText>Removendo versão anterior do Portugol Studio</progressText>
+                    <title>Por favor aguarde...</title>
+                    <actionList>
+                        <registryGet>
+                            <key>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{EEF28793-B766-42EE-9534-B875AE2660C5}_is1</key>
+                            <name>UninstallString</name>
+                            <progressText>Procurando por versões anteriores do Portugol Studio</progressText>
+                            <show>0</show>
+                            <variable>previous_release_unninstaller</variable>
+                        </registryGet>
+                        <setInstallerVariableFromRegEx>
+                            <name>previous_release_unninstaller</name>
+                            <pattern>"</pattern>
+                            <progressText>Procurando por versões anteriores do Portugol Studio</progressText>
+                            <substitution></substitution>
+                            <text>${previous_release_unninstaller}</text>
+                        </setInstallerVariableFromRegEx>
+                        <runProgram>
+                            <program>${previous_release_unninstaller}</program>
+                            <programArguments>/VERYSILENT</programArguments>
+                            <progressText>Removendo versão anterior do Portugol Studio</progressText>
+                            <show>0</show>
+                        </runProgram>
+                    </actionList>
+                    <ruleList>
+                        <registryTest>
+                            <key>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{EEF28793-B766-42EE-9534-B875AE2660C5}_is1</key>
+                            <logic>exists</logic>
+                            <name></name>
+                        </registryTest>
+                    </ruleList>
+                </showProgressDialog>
+                <showProgressDialog>
+                    <progressText>Removendo versão antiga do Portugol Studio</progressText>
+                    <title>Por favor aguarde...</title>
+                    <actionList>
+                        <runProgram>
+                            <program>${install_app_dir}\uninstall.exe</program>
+                            <programArguments>--mode unattended</programArguments>
+                            <progressText>Removendo versão anterior do Portugol Studio</progressText>
+                        </runProgram>
+                    </actionList>
+                    <ruleList>
+                        <fileExists>
+                            <path>${install_app_dir}\uninstall.exe</path>
+                        </fileExists>
+                    </ruleList>
+                </showProgressDialog>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
         <actionGroup>
             <progressText>Removendo a versão anterior do Portugol Studio</progressText>
             <actionList>
@@ -343,13 +401,13 @@
                                 <command>
                                     <makeDefault>0</makeDefault>
                                     <runProgram>${install_java_exe}</runProgram>
-                                    <runProgramArguments>-jar "${install_app_dir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
+                                    <runProgramArguments>-Xms128m -Xmx512m -jar "${install_app_dir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
                                     <verb>Executar em modo console</verb>
                                 </command>
                                 <command>
                                     <makeDefault>0</makeDefault>
                                     <runProgram>${install_javaw_exe}</runProgram>
-                                    <runProgramArguments>-jar "${install_app_dir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
+                                    <runProgramArguments>-Xms128m -Xmx512m -jar "${install_app_dir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
                                     <verb>Executar em modo Gráfico</verb>
                                 </command>
                             </commandList>
@@ -705,20 +763,6 @@ include /usr/share/nano/portugol.nanorc</text>
     <uninstallerName>desinstalar</uninstallerName>
     <vendor>UNIVALI</vendor>
     <width>580</width>
-    <finalPageActionList>
-        <runProgram>
-            <program>${install_javaw_exe}</program>
-            <programArguments>-jar inicializador-ps.jar &amp;</programArguments>
-            <progressText>Executar o Portugol Studio</progressText>
-            <useMSDOSPath>0</useMSDOSPath>
-            <workingDirectory>${install_app_dir}</workingDirectory>
-            <ruleList>
-                <platformTest>
-                    <type>windows</type>
-                </platformTest>
-            </ruleList>
-        </runProgram>
-    </finalPageActionList>
     <parameterList>
         <parameterGroup>
             <name>apresentacao</name>
@@ -766,6 +810,43 @@ Clique em "Avançar" para iniciar a instalação</description>
                     <name>next_page</name>
                     <show>0</show>
                     <value>installation</value>
+                </setInstallerVariable>
+            </validationActionList>
+        </parameterGroup>
+        <parameterGroup>
+            <name>instrucoes_menu_contexto_windows</name>
+            <title>Abrindo os arquivos</title>
+            <explanation></explanation>
+            <value></value>
+            <default></default>
+            <insertAfter>installation</insertAfter>
+            <parameterList>
+                <labelParameter>
+                    <name>descricao_menu_contexto_windows</name>
+                    <description>
+O Portugol Studio foi configurado como programa padrão para abrir arquivos com extensão ".por". Para abrí-los, basta dar um duplo clique sobre o ícone do arquivo. 
+
+Também é possível executá-los sem ter que abrí-los no Portugol Studio. Para isso, clique com o botão direito sobre o ícone do arquivo e selecione uma das opções disponíveis:
+</description>
+                    <explanation></explanation>
+                    <image></image>
+                </labelParameter>
+                <labelParameter>
+                    <name>imagem_meu_contexto_windows</name>
+                    <description></description>
+                    <explanation></explanation>
+                    <image>imagens/menu_contexto_windows.png</image>
+                </labelParameter>
+            </parameterList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+            <validationActionList>
+                <setInstallerVariable>
+                    <name>next_page</name>
+                    <value>installationFinished</value>
                 </setInstallerVariable>
             </validationActionList>
         </parameterGroup>
