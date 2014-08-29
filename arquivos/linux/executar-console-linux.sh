@@ -11,7 +11,7 @@ clear
 
 numero_parametros=$#
 
-comando="'$caminho_java' -jar portugol-console.jar"
+comando="'$caminho_java' -Xms128m -Xmx512m -jar portugol-console.jar"
 
 if [ $numero_parametros -gt 0 ]; then
 
