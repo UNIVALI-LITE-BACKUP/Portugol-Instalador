@@ -109,6 +109,20 @@
                         </distributionFile>
                     </distributionFileList>
                 </folder>
+                <folder>
+                    <description>Scripts de Execução</description>
+                    <destination>${install_app_dir}</destination>
+                    <name>folder_mac_scripts</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>arquivos/mac/executar-console-mac.command</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>arquivos/mac/executar-studio-mac.command</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
             </folderList>
             <startMenuShortcutList>
                 <startMenuShortcut>
@@ -786,14 +800,14 @@ Se você deseja saber mais sobre o projeto e/ou contribuir com o desenvolvimento
                 </labelParameter>
                 <linkParameter>
                     <name>linkstudio</name>
-                    <description>http://univali-l2s.github.io/Portugol-Studio-Site/</description>
+                    <description>http://www.univali.br/portugolstudio</description>
                     <explanation></explanation>
                     <clickedActionList>
                         <launchBrowser>
                             <abortOnError>0</abortOnError>
                             <customErrorMessage>Ocorreu um erro ao tentar abrir o navegador de Internet</customErrorMessage>
                             <show>0</show>
-                            <url>http://univali-l2s.github.io/Portugol-Studio-Site/</url>
+                            <url>http://www.univali.br/portugolstudio</url>
                         </launchBrowser>
                     </clickedActionList>
                 </linkParameter>
