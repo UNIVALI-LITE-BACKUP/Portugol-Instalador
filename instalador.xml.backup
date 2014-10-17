@@ -109,6 +109,20 @@
                         </distributionFile>
                     </distributionFileList>
                 </folder>
+                <folder>
+                    <description>Scripts de Execução</description>
+                    <destination>${install_app_dir}</destination>
+                    <name>folder_mac_scripts</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>arquivos/mac/executar-console-mac.command</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>arquivos/mac/executar-studio-mac.command</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
             </folderList>
             <startMenuShortcutList>
                 <startMenuShortcut>
@@ -575,6 +589,24 @@ include /usr/share/nano/portugol.nanorc</text>
             <ruleList>
                 <platformTest>
                     <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+        <actionGroup>
+            <progressText>Criando ícones</progressText>
+            <actionList>
+                <runProgram>
+                    <program>ln</program>
+                    <programArguments>-s ${install_app_dir}/aplicacao/icones/mac/portugol-studio.icns  ${install_company_dir}/Portugol Studio.app/Contents/Resources/portugol-studio.icns</programArguments>
+                </runProgram>
+                <runProgram>
+                    <program>ln</program>
+                    <programArguments>-s ${install_app_dir}/aplicacao/icones/mac/arquivo-por.icns  ${install_company_dir}/Portugol Studio.app/Contents/Resources/arquivo-por.icns</programArguments>
+                </runProgram>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>osx</type>
                 </platformTest>
             </ruleList>
         </actionGroup>
