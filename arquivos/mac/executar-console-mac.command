@@ -30,7 +30,7 @@ clear
 
 numero_parametros=$#
 
-comando="'$caminho_java' -server -Xms128m -Xmx512m -jar portugol-console.jar"
+comando="'$caminho_java' -server -Xms128m -Xmx512m -Xdock:name=Portugol-Studio -Dvisualvm.display.name=Portugol-Studio -jar  portugol-console.jar"
 
 if [ $numero_parametros -gt 0 ]; then
 

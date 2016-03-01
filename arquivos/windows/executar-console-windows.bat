@@ -10,7 +10,7 @@ SET caminho_aplicacao=%caminho_portugol%\aplicacao
 SET caminho_java=%caminho_portugol%\java\java-windows\bin\java.exe
 
 SET arquivo=
-SET comando="%caminho_java%" -Xms128m -Xmx512m -jar portugol-console.jar
+SET comando="%caminho_java%" -Xms128m -Xmx512m -Dvisualvm.display.name=Portugol-Studio -jar portugol-console.jar
 
 IF NOT "%~1"=="" (
 	

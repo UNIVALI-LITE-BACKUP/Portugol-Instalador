@@ -45,7 +45,7 @@ if [ $numero_parametros -gt 0 ]; then
 
 	clear
 	
-	comando="'$caminho_java' -jar inicializador-ps.jar $lista_argumentos"
+	comando="'$caminho_java' -Xdock:name=Portugol-Studio -Dvisualvm.display.name=Portugol-Studio -jar inicializador-ps.jar $lista_argumentos"
 
 	cd "$caminho_portugol"
 

@@ -26,7 +26,7 @@ if [ $numero_parametros -gt 0 ]; then
 
 	clr
 	
-	comando="'$caminho_java' -jar inicializador-ps.jar $lista_argumentos"
+	comando="'$caminho_java' -Dvisualvm.display.name=Portugol-Studio -jar inicializador-ps.jar $lista_argumentos"
 
 	cd "$caminho_portugol"
 

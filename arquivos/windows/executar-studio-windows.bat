@@ -9,7 +9,7 @@ SET caminho_script=%caminho_script:~0,-1%
 SET caminho_portugol=%caminho_script%
 SET caminho_java=%caminho_portugol%\java\java-windows\bin\javaw.exe
 
-SET comando="%caminho_java%" -jar inicializador-ps.jar
+SET comando="%caminho_java%" -Dvisualvm.display.name=Portugol-Studio -jar inicializador-ps.jar
 SET parametros=
 
 :PROCESSAR_PROXIMO_PARAMETRO
