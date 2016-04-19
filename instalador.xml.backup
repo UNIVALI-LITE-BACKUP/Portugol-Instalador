@@ -1,7 +1,7 @@
 <project>
     <shortName>portugolstudio</shortName>
     <fullName>Portugol Studio</fullName>
-    <version>2.2</version>
+    <version>2.5</version>
     <installerFilename>ps-${product_version}-${platform_name}.${platform_exec_suffix}</installerFilename>
     <debugLevel>0</debugLevel>
     <licenseFile>licenca.txt</licenseFile>
@@ -67,7 +67,7 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <origin>arquivos/java/java-windows/*</origin>
+                            <origin>arquivos/java/java-windows/x86/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -79,7 +79,19 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <origin>arquivos/java/java-linux/*</origin>
+                            <origin>arquivos/java/java-linux/x86/*</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Java Runtime Environment</description>
+                    <destination>${install_java_dir}</destination>
+                    <name>folder_jre_linux_x64</name>
+                    <platforms>linux-x64</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <allowWildcards>1</allowWildcards>
+                            <origin>arquivos/java/java-linux/x64/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -91,7 +103,7 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <origin>arquivos/java/java-osx/*</origin>
+                            <origin>arquivos/java/java-osx/x86/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -531,12 +543,22 @@ MimeType=application/x-portugol</text>
                             <destination>/usr/share/gtksourceview-2.0/language-specs/portugol.lang</destination>
                             <folder>folder_association_files</folder>
                             <origin>portugol.lang</origin>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/gtksourceview-2.0/language-specs</path>
+                                </fileExists>
+                            </ruleList>
                         </unpackFile>
                         <unpackFile>
                             <component>component_extra_files</component>
                             <destination>/usr/share/nano/portugol.nanorc</destination>
                             <folder>folder_association_files</folder>
                             <origin>portugol.nanorc</origin>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/nano</path>
+                                </fileExists>
+                            </ruleList>
                         </unpackFile>
                         <unpackFile>
                             <component>component_extra_files</component>
@@ -589,24 +611,6 @@ include /usr/share/nano/portugol.nanorc</text>
             <ruleList>
                 <platformTest>
                     <type>linux</type>
-                </platformTest>
-            </ruleList>
-        </actionGroup>
-        <actionGroup>
-            <progressText>Criando ícones</progressText>
-            <actionList>
-                <runProgram>
-                    <program>ln</program>
-                    <programArguments>-s ${install_app_dir}/aplicacao/icones/mac/portugol-studio.icns  ${install_company_dir}/Portugol Studio.app/Contents/Resources/portugol-studio.icns</programArguments>
-                </runProgram>
-                <runProgram>
-                    <program>ln</program>
-                    <programArguments>-s ${install_app_dir}/aplicacao/icones/mac/arquivo-por.icns  ${install_company_dir}/Portugol Studio.app/Contents/Resources/arquivo-por.icns</programArguments>
-                </runProgram>
-            </actionList>
-            <ruleList>
-                <platformTest>
-                    <type>osx</type>
                 </platformTest>
             </ruleList>
         </actionGroup>

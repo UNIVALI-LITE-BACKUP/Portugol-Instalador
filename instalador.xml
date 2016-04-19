@@ -1,7 +1,7 @@
 <project>
     <shortName>portugolstudio</shortName>
     <fullName>Portugol Studio</fullName>
-    <version>2.2</version>
+    <version>2.5</version>
     <installerFilename>ps-${product_version}-${platform_name}.${platform_exec_suffix}</installerFilename>
     <debugLevel>0</debugLevel>
     <licenseFile>licenca.txt</licenseFile>
@@ -67,7 +67,7 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <origin>arquivos/java/java-windows/*</origin>
+                            <origin>arquivos/java/java-windows/x86/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -79,7 +79,19 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <origin>arquivos/java/java-linux/*</origin>
+                            <origin>arquivos/java/java-linux/x86/*</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Java Runtime Environment</description>
+                    <destination>${install_java_dir}</destination>
+                    <name>folder_jre_linux_x64</name>
+                    <platforms>linux-x64</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <allowWildcards>1</allowWildcards>
+                            <origin>arquivos/java/java-linux/x64/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -91,7 +103,7 @@
                     <distributionFileList>
                         <distributionDirectory>
                             <allowWildcards>1</allowWildcards>
-                            <origin>arquivos/java/java-osx/*</origin>
+                            <origin>arquivos/java/java-osx/x86/*</origin>
                         </distributionDirectory>
                     </distributionFileList>
                 </folder>
@@ -508,7 +520,9 @@
                     </actionList>
                 </actionGroup>
                 <actionGroup>
+                    <abortOnError>0</abortOnError>
                     <progressText>Criando associações de arquivos</progressText>
+                    <showMessageOnError>0</showMessageOnError>
                     <actionList>
                         <writeFile>
                             <encoding>utf-8</encoding>
@@ -527,61 +541,120 @@ Terminal=0
 MimeType=application/x-portugol</text>
                         </writeFile>
                         <unpackFile>
+                            <abortOnError>0</abortOnError>
                             <component>component_extra_files</component>
                             <destination>/usr/share/gtksourceview-2.0/language-specs/portugol.lang</destination>
                             <folder>folder_association_files</folder>
                             <origin>portugol.lang</origin>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/gtksourceview-2.0/language-specs</path>
+                                </fileExists>
+                            </ruleList>
                         </unpackFile>
                         <unpackFile>
+                            <abortOnError>0</abortOnError>
                             <component>component_extra_files</component>
                             <destination>/usr/share/nano/portugol.nanorc</destination>
                             <folder>folder_association_files</folder>
                             <origin>portugol.nanorc</origin>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/nano</path>
+                                </fileExists>
+                            </ruleList>
                         </unpackFile>
                         <unpackFile>
+                            <abortOnError>0</abortOnError>
                             <component>component_extra_files</component>
                             <destination>/usr/share/gtksourceview-3.0/language-specs/portugol.lang</destination>
                             <folder>folder_association_files</folder>
                             <origin>portugol.lang</origin>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/gtksourceview-3.0/language-specs</path>
+                                </fileExists>
+                            </ruleList>
                         </unpackFile>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>chmod</program>
                             <programArguments>644 /usr/share/gtksourceview-2.0/language-specs/portugol.lang</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/gtksourceview-2.0/language-specs/portugol.lang</path>
+                                </fileExists>
+                            </ruleList>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>chmod</program>
                             <programArguments>644 /usr/share/gtksourceview-3.0/language-specs/portugol.lang</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/gtksourceview-3.0/language-specs/portugol.lang</path>
+                                </fileExists>
+                            </ruleList>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>chmod</program>
                             <programArguments>644 /usr/share/nano/portugol.nanorc</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/nano/portugol.nanorc</path>
+                                </fileExists>
+                            </ruleList>
                         </runProgram>
                         <addTextToFile>
+                            <abortOnError>0</abortOnError>
                             <file>/etc/nanorc</file>
+                            <showMessageOnError>0</showMessageOnError>
                             <text>## Portugol 2.0
 include /usr/share/nano/portugol.nanorc</text>
+                            <ruleList>
+                                <fileExists>
+                                    <path>/usr/share/nano/portugol.nanorc</path>
+                                </fileExists>
+                            </ruleList>
                         </addTextToFile>
                         <unpackFile>
+                            <abortOnError>0</abortOnError>
                             <component>component_extra_files</component>
                             <destination>/usr/share/univali-x-portugol.xml</destination>
                             <folder>folder_association_files</folder>
                             <origin>univali-x-portugol.xml</origin>
+                            <showMessageOnError>0</showMessageOnError>
                         </unpackFile>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>xdg-mime</program>
                             <programArguments>install /usr/share/univali-x-portugol.xml</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>xdg-mime</program>
                             <programArguments>default portugol-studio.desktop application/x-portugol</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>ln</program>
                             <programArguments>-s ${install_app_dir}/aplicacao/icones/linux/arquivo-por.png /usr/share/icons/hicolor/256x256/mimetypes/arquivo-por.png</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>xdg-icon-resource</program>
                             <programArguments>forceupdate</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                     </actionList>
                 </actionGroup>
@@ -700,11 +773,15 @@ include /usr/share/nano/portugol.nanorc</text>
                     </actionList>
                 </actionGroup>
                 <actionGroup>
+                    <abortOnError>0</abortOnError>
                     <progressText>Removendo associações de arquivos</progressText>
+                    <showMessageOnError>0</showMessageOnError>
                     <actionList>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>xdg-mime</program>
                             <programArguments>uninstall /usr/share/univali-x-portugol.xml</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
                             <abortOnError>0</abortOnError>
@@ -713,36 +790,52 @@ include /usr/share/nano/portugol.nanorc</text>
                             <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>rm</program>
                             <programArguments>/usr/share/applications/portugol-studio.desktop</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>rm</program>
                             <programArguments>/usr/share/gtksourceview-2.0/language-specs/portugol.lang</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>rm</program>
                             <programArguments>/usr/share/gtksourceview-3.0/language-specs/portugol.lang</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>rm</program>
                             <programArguments>/usr/share/nano/portugol.nanorc</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>sed</program>
                             <programArguments>-i 's/^include \/usr\/share\/nano\/portugol.nanorc$//' /etc/nanorc</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>sed</program>
                             <programArguments>-i 's/^## Portugol 2.0$//' /etc/nanorc</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>rm</program>
                             <programArguments>/usr/share/icons/hicolor/256x256/mimetypes/arquivo-por.png</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                         <runProgram>
+                            <abortOnError>0</abortOnError>
                             <program>xdg-icon-resource</program>
                             <programArguments>forceupdate</programArguments>
+                            <showMessageOnError>0</showMessageOnError>
                         </runProgram>
                     </actionList>
                 </actionGroup>
