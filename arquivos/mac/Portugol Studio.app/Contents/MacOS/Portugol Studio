@@ -47,7 +47,7 @@ done
 
 clear
 
-comando="'$caminho_java' -jar inicializador-ps.jar $lista_argumentos"
+comando="'$caminho_java' -jar $caminho_portugol/aplicacao/portugol-studio.jar $lista_argumentos"
 
 cd "$caminho_portugol"
 
@@ -56,6 +56,6 @@ else
 
 cd "$caminho_portugol"
 
-"$caminho_java" -jar inicializador-ps.jar "$@"
+"$caminho_java" -jar "$caminho_portugol/aplicacao/portugol-studio.jar" "$@"
 
 fi
