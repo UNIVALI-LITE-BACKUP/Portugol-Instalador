@@ -1,0 +1,7 @@
+arquivos/mac/executar-console-mac.command eol=lf
+arquivos/mac/executar-studio-mac.command eol=lf
+
+
+# Espaços em branco nos caminhos precisam de tratamento especial: http://stackoverflow.com/questions/18864698/whitespace-in-gitattributes-patterns
+
+arquivos/mac/Portugol[[:space:]]Studio.app/Contents/MacOS/Portugol[[:space:]]Studio eol=lf
