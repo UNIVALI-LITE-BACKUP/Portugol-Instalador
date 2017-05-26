@@ -38,7 +38,7 @@
             <folderList>
                 <folder>
                     <description>MAC OS X .app</description>
-                    <destination>${install_company_dir}</destination>
+                    <destination>${install_root_dir}</destination>
                     <name>folder_osx_app_files</name>
                     <platforms>osx</platforms>
                     <distributionFileList>
@@ -215,14 +215,9 @@
                     <value>${windows_folder_common_appdata}</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
-                    <name>install_company_dir</name>
-                    <persist>1</persist>
-                    <value>${install_root_dir}\UNIVALI</value>
-                </setInstallerVariable>
-                <setInstallerVariable>
                     <name>install_app_dir</name>
                     <persist>1</persist>
-                    <value>${install_company_dir}\Portugol Studio</value>
+                    <value>${install_root_dir}/Portugol Studio</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_dir</name>
@@ -254,14 +249,9 @@
                     <value>/usr/local</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
-                    <name>install_company_dir</name>
-                    <persist>1</persist>
-                    <value>${install_root_dir}/univali</value>
-                </setInstallerVariable>
-                <setInstallerVariable>
                     <name>install_app_dir</name>
                     <persist>1</persist>
-                    <value>${install_company_dir}/portugol-studio</value>
+                    <value>${install_root_dir}/portugol-studio</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_dir</name>
@@ -293,14 +283,9 @@
                     <value>/Applications</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
-                    <name>install_company_dir</name>
-                    <persist>1</persist>
-                    <value>${install_root_dir}/UNIVALI</value>
-                </setInstallerVariable>
-                <setInstallerVariable>
                     <name>install_app_dir</name>
                     <persist>1</persist>
-                    <value>${install_company_dir}/Portugol Studio.app/Contents/Resources/IDE</value>
+                    <value>${install_root_dir}/Portugol Studio.app/Contents/Resources/IDE</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_dir</name>
