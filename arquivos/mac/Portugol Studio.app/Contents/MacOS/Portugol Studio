@@ -25,37 +25,6 @@ caminho_portugol="$caminho_portugol/../Resources/IDE"
 caminho_portugol=$(read_lnk "$caminho_portugol")
 caminho_java="$caminho_portugol/java/java-mac/bin/java"
 
-numero_parametros=$#
-echo $caminho_java
-
-if [ $numero_parametros -gt 0 ]; then
-
-lista_argumentos=""
-
-for argumento; do
-
-if [ -f "$argumento" ]; then
-
-argumento=$(read_lnk "$argumento")
-
-argumento="'$argumento'"
-fi
-
-lista_argumentos="$lista_argumentos $argumento"
-
-done
-
-clear
-
-comando="'$caminho_java' -jar $caminho_portugol/aplicacao/portugol-studio.jar $lista_argumentos"
-
 cd "$caminho_portugol"
 
-sh -c "$comando"
-else
-
-cd "$caminho_portugol"
-
-"$caminho_java" -jar "$caminho_portugol/aplicacao/portugol-studio.jar" "$@"
-
-fi
+"$caminho_java" -jar -Dvisualvm.display.name=Portugol-Studio -Xdock:name=Portugol-Studio -Xdock:icon="$caminho_portugol/../portugol-studio.icns" -Xms128M -Xmx512M "$caminho_portugol/aplicacao/portugol-studio.jar"
