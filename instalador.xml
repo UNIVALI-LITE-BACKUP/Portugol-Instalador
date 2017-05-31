@@ -406,7 +406,7 @@
                                 <command>
                                     <makeDefault>1</makeDefault>
                                     <runProgram>${install_javaw_exe}</runProgram>
-                                    <runProgramArguments>-jar "${install_app_dir}\inicializador-ps.jar" "%1"</runProgramArguments>
+                                    <runProgramArguments>-jar "${install_app_dir}/aplicacao/portugol-studio.jar" "%1"</runProgramArguments>
                                     <verb>Abrir</verb>
                                 </command>
                                 <command>
