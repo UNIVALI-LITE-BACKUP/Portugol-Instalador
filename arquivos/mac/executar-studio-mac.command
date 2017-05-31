@@ -2,58 +2,30 @@
 
 read_lnk()
 {
-	caminho_atual="$PWD"
+caminho_atual="$PWD"
 
-	cd "$(dirname "$1")"
-	LINK=$(readlink "$(basename "$1")")
+cd "$(dirname "$1")"
+LINK=$(readlink "$(basename "$1")")
 
-	while [ "$LINK" ]; do
-	
-		cd "$(dirname "$LINK")"
-		LINK=$(readlink "$(basename "$1")")
-	done
+while [ "$LINK" ]; do
 
-	caminho_absoluto="$PWD/$(basename "$1")"
-	cd "$caminho_atual"
+cd "$(dirname "$LINK")"
+LINK=$(readlink "$(basename "$1")")
+done
 
-	echo "$caminho_absoluto"
+caminho_absoluto="$PWD/$(basename "$1")"
+cd "$caminho_atual"
+
+echo "$caminho_absoluto"
 }
 
 caminho_script=$(read_lnk "$0")
 caminho_portugol=$(dirname "$caminho_script")
 caminho_java="$caminho_portugol/java/java-mac/bin/java"
 
-numero_parametros=$#
 
+comando="'$caminho_java' -Xms128M -Xmx512M -Xdock:name=Portugol-Studio -Xdock:icon=../portugol-studio.icns -Dvisualvm.display.name=Portugol-Studio -jar aplicacao/portugol-studio.jar"
 
-if [ $numero_parametros -gt 0 ]; then
+cd "$caminho_portugol"
 
-	lista_argumentos=""
-
-	for argumento; do	
-
-		if [ -f "$argumento" ]; then
-
-			argumento=$(read_lnk "$argumento")
-	
-			argumento="'$argumento'"
-		fi
-
-		lista_argumentos="$lista_argumentos $argumento"
-		
-	done
-
-	clear
-	
-	comando="'$caminho_java' -Xdock:name=Portugol-Studio -Dvisualvm.display.name=Portugol-Studio -jar inicializador-ps.jar $lista_argumentos"
-
-	cd "$caminho_portugol"
-
-	sh -c "$comando"
-else
-
-	cd "$caminho_portugol"
-
-	"$caminho_java" -jar inicializador-ps.jar "$@"
-
-fi
+sh -c "$comando"
