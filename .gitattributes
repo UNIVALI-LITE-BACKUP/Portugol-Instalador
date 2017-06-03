@@ -13,6 +13,6 @@ arquivos/mac/Portugol[[:space:]]Studio.app/Contents/MacOS/Portugol[[:space:]]Stu
 
 #scripts do Linux
 
-arquivos/linux/executar-console-linux.command eol=lf
-arquivos/linux/executar-studio-linux.command eol=lf
+arquivos/linux/executar-console-linux.sh eol=lf
+arquivos/linux/executar-studio-linux.sh eol=lf
 
