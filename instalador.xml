@@ -153,7 +153,7 @@
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>${install_javaw_exe}</windowsExec>
-                    <windowsExecArgs>-jar ${install_app_dir}/aplicacao/portugol-studio.jar</windowsExecArgs>
+                    <windowsExecArgs>-jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled ${install_app_dir}/aplicacao/portugol-studio.jar</windowsExecArgs>
                     <windowsIcon>${install_app_dir}\aplicacao\icones\windows\portugol-studio.ico</windowsIcon>
                     <windowsPath>${install_app_dir}</windowsPath>
                 </startMenuShortcut>
