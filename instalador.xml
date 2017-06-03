@@ -124,6 +124,20 @@
                 <folder>
                     <description>Scripts de Execução</description>
                     <destination>${install_app_dir}</destination>
+                    <name>folder_linux_x64_scripts</name>
+                    <platforms>linux-x64</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>arquivos/linux/executar-studio-linux.sh</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>arquivos/linux/executar-console-linux.sh</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Scripts de Execução</description>
+                    <destination>${install_app_dir}</destination>
                     <name>folder_mac_scripts</name>
                     <platforms>osx</platforms>
                     <distributionFileList>
@@ -522,7 +536,7 @@ Comment=Ambiente de Desenvolvimento para a linguagem Portugol 2.0
 Exec=portugol-studio %F
 Icon=${install_app_dir}/aplicacao/icones/linux/portugol-studio.png
 Categories=Application;Development;Java;IDE;Portugol
-Version=2.2
+Version=2.6
 Type=Application
 Terminal=0
 MimeType=application/x-portugol</text>
