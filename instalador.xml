@@ -21,16 +21,16 @@
             <desktopShortcutList>
                 <shortcut>
                     <comment>Executa o Portugol Studio</comment>
-                    <exec>${install_javaw_exe.unix} -jar inicializador-ps.jar</exec>
+                    <exec>${install_javaw_exe.unix} -jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled ${install_app_dir.unix}/aplicacao/portugol-studio.jar</exec>
                     <icon>${install_app_dir.unix}/aplicacao/icones/linux/portugol-studio.png</icon>
-                    <name>{Portugol Studio}</name>
+                    <name>Portugol Studio</name>
                     <noPinToStart>0</noPinToStart>
                     <path>${install_app_dir.unix}</path>
                     <platforms>all</platforms>
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>${install_javaw_exe}</windowsExec>
-                    <windowsExecArgs>-jar inicializador-ps.jar</windowsExecArgs>
+                    <windowsExecArgs>-jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled "${install_app_dir}\aplicacao\portugol-studio.jar"</windowsExecArgs>
                     <windowsIcon>${install_app_dir}\aplicacao\icones\windows\portugol-studio.ico</windowsIcon>
                     <windowsPath>${install_app_dir}</windowsPath>
                 </shortcut>
@@ -153,7 +153,7 @@
                     <runAsAdmin>0</runAsAdmin>
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>${install_javaw_exe}</windowsExec>
-                    <windowsExecArgs>-jar inicializador-ps.jar</windowsExecArgs>
+                    <windowsExecArgs>-jar ${install_app_dir}/aplicacao/portugol-studio.jar</windowsExecArgs>
                     <windowsIcon>${install_app_dir}\aplicacao\icones\windows\portugol-studio.ico</windowsIcon>
                     <windowsPath>${install_app_dir}</windowsPath>
                 </startMenuShortcut>
@@ -217,7 +217,7 @@
                 <setInstallerVariable>
                     <name>install_app_dir</name>
                     <persist>1</persist>
-                    <value>${install_root_dir}/Portugol Studio</value>
+                    <value>${install_root_dir}\UNIVALI\Portugol Studio</value>
                 </setInstallerVariable>
                 <setInstallerVariable>
                     <name>install_java_dir</name>
@@ -406,19 +406,19 @@
                                 <command>
                                     <makeDefault>1</makeDefault>
                                     <runProgram>${install_javaw_exe}</runProgram>
-                                    <runProgramArguments>-jar "${install_app_dir}/aplicacao/portugol-studio.jar" "%1"</runProgramArguments>
+                                    <runProgramArguments>-jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled "${install_app_dir}/aplicacao/portugol-studio.jar" "%1"</runProgramArguments>
                                     <verb>Abrir</verb>
                                 </command>
                                 <command>
                                     <makeDefault>0</makeDefault>
                                     <runProgram>${install_java_exe}</runProgram>
-                                    <runProgramArguments>-Xms128m -Xmx512m -jar "${install_app_dir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
+                                    <runProgramArguments>-jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled "${install_app_dir}/aplicacao/portugol-console.jar" "%1"</runProgramArguments>
                                     <verb>Executar em modo console</verb>
                                 </command>
                                 <command>
                                     <makeDefault>0</makeDefault>
                                     <runProgram>${install_javaw_exe}</runProgram>
-                                    <runProgramArguments>-Xms128m -Xmx512m -jar "${install_app_dir}\aplicacao\portugol-console.jar" "%1"</runProgramArguments>
+                                    <runProgramArguments>-jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled "${install_app_dir}/aplicacao/portugol-console.jar" "%1"</runProgramArguments>
                                     <verb>Executar em modo Gráfico</verb>
                                 </command>
                             </commandList>
@@ -473,6 +473,8 @@
             </ruleList>
         </actionGroup>
         <actionGroup>
+            <abortOnError>0</abortOnError>
+            <showMessageOnError>0</showMessageOnError>
             <actionList>
                 <actionGroup>
                     <progressText>Configurando arquivos executáveis</progressText>
