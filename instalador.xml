@@ -384,7 +384,7 @@
             </ruleList>
         </actionGroup>
         <actionGroup>
-            <progressText>Removendo a versão anterior do Portugol Studio</progressText>
+            <progressText>Removendo a versão anterior do Portugol Studio no Linux</progressText>
             <actionList>
                 <runProgram>
                     <program>/usr/local/univali/portugol-studio/desinstalar</program>
@@ -398,6 +398,21 @@
                 <fileExists>
                     <path>/usr/local/univali/portugol-studio/desinstalar</path>
                 </fileExists>
+            </ruleList>
+        </actionGroup>
+        <actionGroup>
+            <abortOnError>0</abortOnError>
+            <explanation>Removendo versão antiga do PS</explanation>
+            <showMessageOnError>0</showMessageOnError>
+            <actionList>
+                <deleteFile>
+                    <path>/Applications/UNIVALI</path>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>osx</type>
+                </platformTest>
             </ruleList>
         </actionGroup>
     </readyToInstallActionList>
