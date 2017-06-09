@@ -388,7 +388,7 @@
             <actionList>
                 <runProgram>
                     <program>/usr/local/univali/portugol-studio/desinstalar</program>
-                    <programArguments></programArguments>
+                    <programArguments>--mode unattended</programArguments>
                 </runProgram>
             </actionList>
             <ruleList>
