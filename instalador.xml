@@ -23,7 +23,7 @@
                     <comment>Executa o Portugol Studio</comment>
                     <exec>${install_javaw_exe.unix} -jar -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled ${install_app_dir.unix}/aplicacao/portugol-studio.jar</exec>
                     <icon>${install_app_dir.unix}/aplicacao/icones/linux/portugol-studio.png</icon>
-                    <name>Portugol Studio</name>
+                    <name>{Portugol Studio}</name>
                     <noPinToStart>0</noPinToStart>
                     <path>${install_app_dir.unix}</path>
                     <platforms>all</platforms>
