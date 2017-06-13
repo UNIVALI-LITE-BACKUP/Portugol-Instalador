@@ -7,7 +7,7 @@
 	<key>CFBundleGetInfoString</key>
 	<string>Ambiente de desenvolvimento para aprender a programar na linguagem Portugol 2.0</string>
 	<key>CFBundleVersion</key>
-	<string>2.2</string>
+	<string>2.6</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleAllowMixedLocalizations</key>
@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2</string>
+	<string>2.6</string>
 	<key>CFBundleIconFile</key>
 	<string>portugol-studio.icns</string>
 	<key>CFBundleIdentifier</key>
