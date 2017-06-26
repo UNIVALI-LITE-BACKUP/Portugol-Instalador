@@ -30,7 +30,7 @@ clear
 
 numero_parametros=$#
 
-comando="'$caminho_java' -server -Xms128m -Xmx512m -Xdock:name=Portugol-Studio -Dvisualvm.display.name=Portugol-Studio -jar  portugol-console.jar"
+comando="'$caminho_java' -server -Xms32m -Xmx256m -XX:MinHeapFreeRatio=5 -XX:MaxHeapFreeRatio=10 -XX:+UseG1GC -XX:+CMSClassUnloadingEnabled -Dvisualvm.display.name=Portugol-Studio -Xdock:name=Portugol-Studio -Xdock:icon=./aplicacao/icones/mac/portugol-studio.icns -jar portugol-console.jar"
 
 if [ $numero_parametros -gt 0 ]; then
 
